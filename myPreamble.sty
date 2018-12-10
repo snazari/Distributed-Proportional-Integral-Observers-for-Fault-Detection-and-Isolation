@@ -1,0 +1,166 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{mypreamble}
+  [2018/03/17 MyPreamble]
+
+\RequirePackage[final]{graphicx}
+%\RequirePackage[text={7in,10in},centering,top=72pt,bottom=54pt,right=54pt,left=54pt]{geometry}
+\RequirePackage{color}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage[linesnumbered,ruled]{algorithm2e}
+\RequirePackage{amsfonts}
+\RequirePackage{hyperref}
+%\RequirePackage{url}
+\RequirePackage{float}
+\RequirePackage{caption}
+%\RequirePackage[numbers,sort&compress]{natbib}
+%\RequirePackage{tikz}
+% \RequirePackage{setspace} % Double spacing
+% %\doublespacing
+\pdfminorversion=4
+\RequirePackage{subcaption}
+\RequirePackage{cite}
+\RequirePackage{enumerate}% http://ctan.org/pkg/enumerate
+\RequirePackage{bbm}
+\RequirePackage{mathtools}
+\RequirePackage{commath}
+\RequirePackage{dsfont}
+\RequirePackage{etoolbox}
+%\RequirePackage{geometry}
+% \geometry{
+% a4paper,
+% left=14.1mm,
+% right=14.1mm,
+% top=33.2mm,
+% bottom=24mm,
+% }
+%\RequirePackage{flushend}
+% \hypersetup{
+%     bookmarks=true,         % show bookmarks bar?
+%     unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+%     pdftoolbar=true,        % show Acrobat’s toolbar?
+%     pdfmenubar=true,        % show Acrobat’s menu?
+%     pdffitwindow=false,     % window fit to page when opened
+%     pdfstartview={FitH},    % fits the width of the page to the window
+%     pdftitle={Stability Radius Characterization of $L_{\sigma}$-Gain for Positive Systems and its Significance in Stabilization with Optimal Performance},    % title
+%     pdfauthor={Sam Nazari},     % author
+%     pdfsubject={},   % subject of the document
+%     pdfcreator={Sam Nazari},   % creator of the document
+%     pdfproducer={Sam Nazari}, % producer of the document
+%     pdfkeywords={Stability Radius}, % list of keywords
+%     pdfnewwindow=true,      % links in new PDF window
+%     colorlinks=false,       % false: boxed links; true: colored links
+%     linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+%     citecolor=green,        % color of links to bibliography
+%     filecolor=magenta,      % color of file links
+%     urlcolor=cyan           % color of external links
+% }
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+\newtheorem{app}{Application}
+\newtheorem{ass}{Assumption}
+\newtheorem{cond}{Condition}
+\newtheorem{problem}{Problem}
+\let\oldnorm\norm   % <-- Store original \norm as \oldnorm
+\let\norm\undefined % <-- "Undefine" \norm
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+%\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+%  \numberwithin{equation}{section}
+
+%    Absolute value notation
+%\newcommand{\abs}[1]{\lvert#1\rvert}
+
+%    Circled numbers
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+            
+%    Blank box placeholder for figures (to avoid requiring any
+%    particular graphics capabilities for printing this document).
+\newcommand{\blankbox}[2]{%
+  \parbox{\columnwidth}{\centering
+%    Set fboxsep to 0 so that the actual size of the box will match the
+%    given measurements more closely.
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}%
+  }%
+}
+
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+
+%  Some of my shortcuts 
+
+\def\X{b}
+\def\tX{\tilde{b}}
+\def\mX{B}
+\def\tmX{\tilde{B}}
+\def\bone{{\bf 1}}
+\def\bzero{{\bf 0}}
+\def\bx{{\bf x}}
+\def\by{{\bf y}}
+\def\bz{{\bf z}}
+\def\bof{{\bf f}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\Rp{\mathbb{R}_+}
+\def\Rpp{\mathbb{R}_{++}}
+\def\tT{\mathsf{T}} % Transpose
+\def\C{\mathbb{C}}
+\def\mP{\mathbb{P}}
+\def\mE{\mathbb{E}}
+\def\mF{\mathbb{F}}
+\def\mI{\mathbb{I}}
+\def\mM{\mathbb{M}}
+\def\cA{\mathcal{A}}
+\def\cD{\mathcal{D}}
+\def\cN{\mathcal{N}}
+\def\cV{\mathcal{V}}
+\def\cE{\mathcal{E}}
+\def\cC{\mathcal{C}}
+\def\cT{\mathcal{T}}
+\def\cS{\mathcal{S}}
+\def\cP{\mathcal{P}}
+\def\cB{\mathcal{B}}
+\def\cG{\mathcal{G}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cQ{\mathcal{Q}}
+\def\cK{\mathcal{K}}
+\def\cVGD{\mathcal{V}_{G_d}}
+\def\cEGD{\mathcal{E}_{G_d}}
+\def\cVHD{\mathcal{V}_{H_d}}
+\def\cEHD{\mathcal{E}_{H_d}}
+\def\eps{\epsilon}
+\def\reff{\textup{Reff}}
+\def\deg{\textup{deg}}
+\def\GD{G_d=(\cVGD,\cEGD)}
+\def\HD{H_d=(\cVHD,\cEHD)}
+\def\gez{\geq 0}
+\def\gz{>0}
+\def\lez{\leq 0}
+\def\lz{<0}
+\def\ls{L_{\sigma}}
+\def\linf{L_{\infty}}
+\def\l1{L_{1}}
+\def\hs{C(sI-A)^{-1}E+F}
+
+\newcommand{\etal}{\textit{et al}. }
+\newcommand{\ie}{\textit{i}.\textit{e}., }
+\newcommand{\eg}{\textit{e}.\textit{g}. }
+%\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\DeclareMathOperator*{\argmax}{\arg\!\max}
+
+\endinput
